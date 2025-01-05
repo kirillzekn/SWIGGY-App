@@ -9,3 +9,15 @@ variable "ARM_SUBSCRIPTION_ID" {
   type        = string
   sensitive = true
 }
+
+variable "VM_ADMIN_PASSWORD" {
+  description = "Azure VM ADMIN PASSWORD"
+  type        = string
+  sensitive = true
+}
+
+variable "VM_ADMIN_USERNAME" {
+  description = "Azure VM ADMIN USERNAME"
+  type        = string
+  sensitive = true
+}
