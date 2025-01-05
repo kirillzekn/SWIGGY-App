@@ -26,6 +26,25 @@ resource "azurerm_virtual_machine" "default" {
         disable_password_authentication = false
     }
     tags = {
-        environment = "staging"
+        app = "swiggy-app"
     }
+}
+
+resource "azurerm_network_interface" "default" {
+  name                      = "swiggy-app-nic"
+  location                  = azurerm_resource_group.default.location
+  resource_group_name       = azurerm_resource_group.default.name
+  ip_configuration {
+      name                          = "internal"
+      subnet_id                     = azurerm_subnet.default.id
+      private_ip_address_allocation = "Dynamic"
+  }
+  
+}
+
+resource "azurerm_subnet" "default" {
+  name                 = "internal"
+  resource_group_name  = azurerm_resource_group.default.name
+  virtual_network_name = azurerm_virtual_network.default.name
+  address_prefixes     = ["192.168.0.0/24"]
 }
