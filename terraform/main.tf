@@ -30,6 +30,21 @@ resource "azurerm_virtual_machine" "default" {
     }
 }
 
+resource "azurerm_virtual_machine_extension" "default" {
+    name                 = "customScript"
+    virtual_machine_id   = azurerm_virtual_machine.default.id
+    publisher            = "Microsoft.Azure.Extensions"
+    type                 = "CustomScript"
+    type_handler_version = "2.0"
+    settings = <<SETTINGS
+        {
+            "script": "./inline-script.sh"
+        }
+SETTINGS
+  
+}
+
+
 resource "azurerm_network_interface" "default" {
   name                      = "swiggy-app-nic"
   location                  = azurerm_resource_group.default.location
