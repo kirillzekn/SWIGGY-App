@@ -59,9 +59,19 @@ resource "azurerm_network_interface" "default" {
       name                          = "internal"
       subnet_id                     = azurerm_subnet.default.id
       private_ip_address_allocation = "Dynamic"
+      public_ip_address_id          = azurerm_public_ip.default.id
   }
   
 }
+
+#Create Public IP for Azure VM
+resource "azurerm_public_ip" "default" {
+  name                = "swiggy-app-public-ip"
+  location            = azurerm_resource_group.default.location
+  resource_group_name = azurerm_resource_group.default.name
+  allocation_method   = "Dynamic"
+}
+
 
 # Create a virtual network within the resource group
 resource "azurerm_virtual_network" "default" {
@@ -69,6 +79,7 @@ resource "azurerm_virtual_network" "default" {
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   address_space       = ["10.0.0.0/16"]
+
 }
 
 resource "azurerm_subnet" "default" {
