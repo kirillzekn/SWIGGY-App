@@ -44,7 +44,7 @@ resource "azurerm_virtual_machine_extension" "default" {
     type_handler_version = "2.0"
     settings = <<SETTINGS
         {
-            "script": "./inline-script.sh"
+            "script": "${filebase64("inline-script.sh")}"
         }
 SETTINGS
   
