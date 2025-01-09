@@ -102,7 +102,7 @@ resource "azurerm_network_security_group" "default" {
         protocol = "Tcp"
         source_port_range = "*"
         destination_port_range = "22"
-        source_address_prefix = "146.23.46.12"
+        source_address_prefix = "146.23.46.44"
         destination_address_prefix = "*"
         
     }

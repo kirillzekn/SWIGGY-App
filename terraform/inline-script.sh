@@ -10,12 +10,12 @@ sudo apt-get install trivy  -y
 sudo apt-get update
 sudo apt-get install docker.io -y
 sudo usermod -aG docker ubuntu
-newgrp docker
+sudo newgrp docker
 sudo chmod 777 /var/run/docker.sock
 
 #run jenkins
-docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts
+sudo docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts
 
 #run sonarqube
-docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
+sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
 
