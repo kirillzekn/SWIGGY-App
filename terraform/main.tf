@@ -88,3 +88,29 @@ resource "azurerm_subnet" "default" {
   virtual_network_name = azurerm_virtual_network.default.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+
+resource "azurerm_network_security_group" "default" {
+    name                = "swiggy-app-nsg"
+    location            = azurerm_resource_group.default.location
+    resource_group_name = azurerm_resource_group.default.name
+
+    security_rule {
+        name = "SSH"
+        priority = 100
+        direction = "Inbound"
+        access = "Allow"
+        protocol = "Tcp"
+        source_port_range = "*"
+        destination_port_range = "22"
+        source_address_prefix = "146.23.46.12"
+        destination_address_prefix = "*"
+        
+    }
+  
+}
+
+resource "azurerm_subnet_network_security_group_association" "default" {
+    subnet_id                 = azurerm_subnet.default.id
+    network_security_group_id = azurerm_network_security_group.default.id
+  
+}
