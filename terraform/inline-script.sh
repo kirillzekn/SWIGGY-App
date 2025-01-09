@@ -13,6 +13,13 @@ sudo usermod -aG docker ubuntu
 sudo newgrp docker
 sudo chmod 777 /var/run/docker.sock
 
+#create homedir for jenkins
+#sudo mkdir -p /var/jenkins_home
+#sudo chown -R 1000:1000 /var/jenkins_home
+
+#clean up all docker exited containers
+sudo docker rm -v $(docker ps --filter status=exited -q)
+
 #run jenkins
 sudo docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts
 

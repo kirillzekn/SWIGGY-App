@@ -15,7 +15,7 @@ resource "azurerm_virtual_machine" "default" {
     storage_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
-        sku       = "16.04-LTS"
+        sku       = "22_04-lts"
         version   = "latest"
     }
     storage_os_disk {
