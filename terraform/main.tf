@@ -106,6 +106,30 @@ resource "azurerm_network_security_group" "default" {
         destination_address_prefix = "*"
         
     }
+        security_rule {
+        name = "Jenkins"
+        priority = 101
+        direction = "Inbound"
+        access = "Allow"
+        protocol = "Tcp"
+        source_port_range = "*"
+        destination_port_range = "8080"
+        source_address_prefix = "146.23.46.44"
+        destination_address_prefix = "*"
+        
+    }
+        security_rule {
+        name = "Sonar"
+        priority = 102
+        direction = "Inbound"
+        access = "Allow"
+        protocol = "Tcp"
+        source_port_range = "*"
+        destination_port_range = "9000"
+        source_address_prefix = "146.23.46.44"
+        destination_address_prefix = "*"
+        
+    }
   
 }
 
