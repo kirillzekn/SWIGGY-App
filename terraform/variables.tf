@@ -21,3 +21,10 @@ variable "VM_ADMIN_USERNAME" {
   type        = string
   sensitive = true
 }
+
+variable "SOURCE_IP" {
+  description = "Source IP"
+  type        = string
+  sensitive = true
+  
+}
