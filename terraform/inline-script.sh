@@ -18,7 +18,7 @@ sudo apt -y install docker-ce docker-ce-cli containerd.io
 systemctl enable docker
 
 #run jenkins
-sudo docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts
+sudo docker run -d -p 8080:8080 --name jenkins -v /home/jan/jenkins:/var/jenkins_home jenkins/jenkins:lts
 
 #run sonarqube
 sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
