@@ -16,4 +16,19 @@ DevOps Real-time Project | Deployment of SWIGGY App by ZEKN
 - Docker API
 - Docker build Step
 
-3. After plugin installation configure Jenkins tools by installing JDK 17
+3. After plugin installation configure Jenkins tools by installing:
+- JDK 17.0.X, from adoptium.net
+- GIT
+- SonarQube, latest version
+- NodeJS, latest version
+- Docker, from docker.com
+- Dependency Check, latest version
+
+4. Configure SonarQube
+- Create a SQ token, under Administration -> User -> Security
+- Under Jenkins -> Manage Jenkins -> Credentials -> Global -> Add secret text with SQ token
+- In SQ Administration -> Configuration -> Create Web Hook by providing Jenkins URL/sonarqube-webhook/
+- In Jenkins -> System Configuratrion -> System add SQ installation by providing SQ URL with port, for Auth use SQ token
+
+5. Configure Docker Hub credentials in Jenkins
+- 
