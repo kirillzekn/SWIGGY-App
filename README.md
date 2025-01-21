@@ -25,7 +25,7 @@ DevOps Real-time Project | Deployment of SWIGGY App by ZEKN
 - Dependency Check, latest version
 
 4. Configure SonarQube
-- Create a SQ token, under Administration -> User -> Security
+- Create a SQ token, under Administration ->  Security -> User
 - Under Jenkins -> Manage Jenkins -> Credentials -> Global -> Add secret text with SQ token
 - In SQ Administration -> Configuration -> Create Web Hook by providing Jenkins URL/sonarqube-webhook/
 - In Jenkins -> System Configuratrion -> System add SQ installation by providing SQ URL with port, for Auth use SQ token
