@@ -31,4 +31,21 @@ DevOps Real-time Project | Deployment of SWIGGY App by ZEKN
 - In Jenkins -> System Configuratrion -> System add SQ installation by providing SQ URL with port, for Auth use SQ token
 
 5. Configure Docker Hub credentials in Jenkins
-- 
+- using DockerHub username configure credentials: Manage Jenkins -> Credentials (Security section) -> Add new credentials (global scope)
+
+6. Create a Job
+- New item -> pipeline -> write a script.
+
+7. Script
+- Tools to be used: jdk, nodeJS
+- Declare environment variable for sonar qube location using SCANNER_HOME
+- Clean workspace
+- Checkout code from github repository with source code
+- Perform sonarQube analysis
+- Quality gate
+- Install dependency: npm
+- Perform source code scan by OWASP
+- Perform source code scan by Trivy 
+- Docker build and push
+- Scan docker image with Trivy
+- Deploy container
