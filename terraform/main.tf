@@ -139,7 +139,7 @@ resource "azurerm_network_security_group" "default" {
         protocol = "Tcp"
         source_port_range = "*"
         destination_port_range = "8080"
-        source_address_prefix = azurerm_public_ip.default.*.ip_address
+        source_address_prefix = azurerm_public_ip.default.ip_address
         destination_address_prefix = "*"
         
     }
@@ -152,7 +152,7 @@ resource "azurerm_network_security_group" "default" {
         protocol = "Tcp"
         source_port_range = "*"
         destination_port_range = "9000"
-        source_address_prefix = azurerm_public_ip.default.*.ip_address
+        source_address_prefix = azurerm_public_ip.default.ip_address
         destination_address_prefix = "*"
         
     }
