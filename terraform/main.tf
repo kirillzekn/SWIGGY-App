@@ -130,6 +130,32 @@ resource "azurerm_network_security_group" "default" {
         destination_address_prefix = "*"
         
     }
+
+            security_rule {
+        name = "SonarToJenkins"
+        priority = 103
+        direction = "Inbound"
+        access = "Allow"
+        protocol = "Tcp"
+        source_port_range = "*"
+        destination_port_range = "8080"
+        source_address_prefix = azurerm_public_ip.default.*.ip_address
+        destination_address_prefix = "*"
+        
+    }
+
+            security_rule {
+        name = "JenkinsToSonar"
+        priority = 104
+        direction = "Inbound"
+        access = "Allow"
+        protocol = "Tcp"
+        source_port_range = "*"
+        destination_port_range = "9000"
+        source_address_prefix = azurerm_public_ip.default.*.ip_address
+        destination_address_prefix = "*"
+        
+    }
   
 }
 
