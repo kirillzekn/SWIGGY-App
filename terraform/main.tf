@@ -9,7 +9,7 @@ resource "azurerm_virtual_machine" "default" {
   location              = azurerm_resource_group.default.location
   resource_group_name   = azurerm_resource_group.default.name
   network_interface_ids = [azurerm_network_interface.default.id]
-    vm_size               = "Standard_B2s"
+    vm_size               = "Standard_B2ms"
     delete_os_disk_on_termination = true
     delete_data_disks_on_termination = true
     storage_image_reference {
@@ -139,7 +139,7 @@ resource "azurerm_network_security_group" "default" {
         protocol = "Tcp"
         source_port_range = "*"
         destination_port_range = "8080"
-        source_address_prefix = azurerm_public_ip.default.ip_address
+        source_address_prefix = "${azurerm_public_ip.default.ip_address}"
         destination_address_prefix = "*"
         
     }
@@ -152,7 +152,7 @@ resource "azurerm_network_security_group" "default" {
         protocol = "Tcp"
         source_port_range = "*"
         destination_port_range = "9000"
-        source_address_prefix = azurerm_public_ip.default.ip_address
+        source_address_prefix = "${azurerm_public_ip.default.ip_address}"
         destination_address_prefix = "*"
         
     }
